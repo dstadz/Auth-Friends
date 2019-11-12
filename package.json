@@ -8,6 +8,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.3",
     "express": "^4.15.2",
+    "react-hook-form": "^3.27.0",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
