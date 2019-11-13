@@ -13,7 +13,7 @@ export default function Login() {
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
+  //console.log(errors);
   
   const bigSubmit = e => {
     e.preventDefault();
@@ -21,7 +21,7 @@ export default function Login() {
     axios.post(`http://localhost:5000/api/login`, state.credentials)
     .then(res => {
       const token = res.data.payload
-      sessionStorage.setItem("token", token);
+      window.localStorage.setItem("token", token);
       setState({...state, isLoggedIn:true})
       console.log(state)
     })
@@ -29,7 +29,7 @@ export default function Login() {
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem("token")) {
+    if (localStorage.getItem("token")) {
       setState({ ...state, isLoggedIn: true });
     } else {
       setState({ ...state, isLoggedIn: false });
