@@ -13,7 +13,7 @@ const FriendList = () => {
   const [friends, setFriends] = useState([])
   useEffect(() => {
     getData();
-    if(!sessionStorage.getItem('token')){
+    if(! window.localStorage.getItem('token')){
       console.error('plz log in')
     } else {
       console.info('we are logged in')
@@ -22,12 +22,12 @@ const FriendList = () => {
 
   const getData = () => {
     axios.get(`http://localhost:5000/api/friends`,{
-      headers: {authorization: sessionStorage.getItem('token')}
+      headers: {authorization:  window.localStorage.getItem('token')}
     })
     .then(res =>{
       setFriends(res.data)
-      
     })
+    .catch(err => console.log(err))
   }
   console.log(friends)
 
